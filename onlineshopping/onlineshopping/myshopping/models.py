@@ -11,7 +11,7 @@ class Category(models.Model):
     cat_description=models.CharField(max_length=300)
 
     def __str__(self):
-        return self.name
+        return self.cat_name 
 
 class SubCategory(models.Model):
     subcat_name = models.CharField(max_length=120)
@@ -19,7 +19,7 @@ class SubCategory(models.Model):
     subcat_description=models.CharField(max_length=300)
 
     def __str__(self):
-        return self.name
+        return self.subcat_name
 
 class Brand(models.Model):
     brand_name = models.CharField(max_length=120)
@@ -28,7 +28,7 @@ class Brand(models.Model):
     
 
     def __str__(self):
-        return self.name
+        return self.brand_name
 
 class Product(models.Model):
     product_name = models.CharField(max_length=120)
@@ -39,4 +39,4 @@ class Product(models.Model):
     
 
     def __str__(self):
-        return self.name
+        return self.product_name 
