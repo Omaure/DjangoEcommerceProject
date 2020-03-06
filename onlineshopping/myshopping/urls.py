@@ -4,7 +4,5 @@ from myshopping import views
 from . import views
 
 urlpatterns=[
-    # ex: /library/
-    # path('', views.index, name='index'),
     path('', views.product_list, name='list'),
 ]
