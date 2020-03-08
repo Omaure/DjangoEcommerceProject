@@ -7,35 +7,40 @@ from django.db import models
 
 class Category(models.Model):
     cat_name = models.CharField(max_length=120)
-    cat_id = models.IntegerField()
-    cat_description=models.CharField(max_length=300)
+    cat_id = models.IntegerField(primary_key=True)
+    cat_description=models.CharField(max_length=400)
+    cat_image=models.ImageField(upload_to='gallery',default='default.jpg')
 
     def __str__(self):
         return self.cat_name
 
 class SubCategory(models.Model):
     subcat_name  = models.CharField(max_length=120)
-    subcat_id = models.IntegerField()
+    category_id=models.ForeignKey(Category,on_delete=models.CASCADE)
+    subcat_id = models.IntegerField(primary_key=True)
     subcat_description=models.CharField(max_length=300)
+    subcat_image=models.ImageField(upload_to='gallery')
 
     def __str__(self):
-        return self.brand_name 
+        return self.subcat_name 
 
 class Brand(models.Model):
-    brand_name= models.CharField(max_length=120)
-    brand_id = models.IntegerField()
-    brand_cat_id=models.IntegerField()
-    
+    name = models.CharField(max_length=120)
+    brand=models.IntegerField(primary_key=True)
+    subcat_id=models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    brand_img=models.ImageField(upload_to='gallery')
 
     def __str__(self):
-        return self. brand_name 
+        return self.name
 
 class Product(models.Model):
     product_name = models.CharField(max_length=120)
-    product_id = models.IntegerField()
-    product_subcat_id=models.IntegerField()
-    product_price=models.DecimalField(max_digits=5,decimal_places=2)
+    product_id = models.IntegerField(primary_key=True)
+    product_brand=models.ForeignKey(Brand,on_delete=models.CASCADE)
+    product_price=models.IntegerField()
     image1=models.ImageField(upload_to='gallery')
+    image2=models.ImageField(upload_to='gallery')
+    image3=models.ImageField(upload_to='gallery')
     
 
     def __str__(self):

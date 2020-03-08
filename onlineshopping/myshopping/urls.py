@@ -4,5 +4,7 @@ from myshopping import views
 from . import views
 
 urlpatterns=[
-    path('', views.product_list, name='list'),
+    # path('', views.category_list, name='list'),
+    path('', views.Data_list, name='sublist'),
+    path('products/', views.products, name='products'),
 ]

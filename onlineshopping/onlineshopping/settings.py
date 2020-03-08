@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'onlineShopping',
+        'NAME': 'pTest',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost'

@@ -1,26 +1,130 @@
+<!DOCTYPE html>
 <html>
-<h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
+
+<head>
+  <h2 style="text-align: center;color: darkmagenta;margin: 30px;font-size: 50px;font-weight: bold;">
     Online shopping
-</h2>
+  </h2>
+  <ul>
+    <li><a  href="/">Home</a></li>
+    <li><a href="products/">Products</a></li>
+    <!-- <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li> -->
+  </ul>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
 
-<h1>List of products</h1>
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
 
-{% for item in object_list %}
-<select >
-<option style="border:2px solid yellow;"> product Name: {{ item.product_name }}</option>
-<option style="border:2px solid yellow;">product id:
-{{ item.product_id}}</option>
-<option style="border:2px solid yellow;">
-    product subcategory id: {{ item.product_subcat_id}}
-</option>
-<option style="border:2px solid yellow;">
-    product_price: {{ item.product_price}}
-    </option>
-    <option style="border:2px solid yellow;">
-       image: {{ item.image1}}
-        </option>
-    </select>
-    <img style='width:190px;'src='{{ MEDIA_URL }}{{ item.image1 }}'>
-{% endfor %}
-</table>
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+    li a:hover {
+  background-color: #555;
+  color: white;
+}
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -1px;
+    }
+    .container{
+
+      margin:20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    {% for item in cat_list %}
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ item.cat_image}}'>
+    <p style="width: 30%;text-align: center;">{{ item.cat_description}}</p>
+
+    <div class="container">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ item.cat_name}}
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-submenu">
+            <a class="test" tabindex="-1" href="#">{{ item.cat_name}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for sitem in subcat_list %}
+              {% if item.cat_id == sitem.category_id_id%}
+              <li class="dropdown-submenu">
+                <a class="test" href="#">{{ sitem.subcat_name}} <span class="caret"></span></a>
+
+                <ul class="dropdown-menu">
+                  {% for bitem in brand_list %}
+                  {% if bitem.subcat_id_id == sitem.subcat_id %}
+                  <li class="dropdown-submenu">
+                    <a class="test" href="#">{{ bitem.name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      {% for pitem in product_list %}
+                      {% if bitem.brand == pitem.product_brand_id %}
+                      <li id="test"><a href="#"> {{pitem.product_name }}</a></li>
+                      {% else%}
+
+                      {% endif %}
+                      {%endfor%}
+                    </ul>
+                  </li>
+                  {% else%}
+
+                  {% endif %}
+                  {%endfor%}
+                </ul>
+              </li>
+              {% else%}
+
+              {% endif %}
+              {%endfor%}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {%endfor%}
+   
+    <script>
+
+      $(document).ready(function () {
+        $('.dropdown-submenu a.test').on("click", function (e) {
+          $(this).next('ul').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        });
+      });
+    </script>
+
+</body>
+
 </html>
