@@ -35,7 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
     'myshopping',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +54,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'onlineshopping.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -61,10 +65,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 
 WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 
@@ -74,16 +86,16 @@ WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Company',
+        'NAME': 'onlineShopping',
         'USER': 'root',
         'PASSWORD': 'omaramora11',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'HOST': 'localhost'
     }
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -117,3 +129,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SITE_ID = 1
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = "/media/"
+LOGIN_REDIRECT_URL = '/'

@@ -38,7 +38,7 @@ class Product(models.Model):
     product_id = models.IntegerField()
     product_subcat_id = models.IntegerField()
     product_price = models.DecimalField(max_digits=5, decimal_places=2)
-    image1 = models.ImageField(upload_to='image1')
+    image1 = models.ImageField(upload_to='gallery')
 
     def __str__(self):
         return self.product_name
