@@ -61,20 +61,18 @@ li a:hover:not(.active) {
   </style>
 </head>
 
-<body>
+<body style="background-color:linen;"> 
 
   <div class="container">
     {% for item in cat_list %}
-    <img style='width:30%;' src='{{ MEDIA_URL }}{{ item.cat_image}}'>
-    <p style="width: 30%;text-align: center;">{{ item.cat_description}}</p>
+    <h1>{{ item.cat_name}} Category</h1>
+    <img style='width:30%;border:3px solid black ;' src='{{ MEDIA_URL }}{{ item.cat_image}}'>
+    <p style="font-weight: bold; width: 30%;text-align: center;">{{ item.cat_description}}</p>
 
     <div class="container">
       <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ item.cat_name}}
+        <button style="text-align: center;font-weight: bold;border:3px solid black;"class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ item.cat_name}}
           <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-submenu">
-            <a class="test" tabindex="-1" href="#">{{ item.cat_name}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               {% for sitem in subcat_list %}
               {% if item.cat_id == sitem.category_id_id%}
@@ -89,7 +87,7 @@ li a:hover:not(.active) {
                     <ul class="dropdown-menu">
                       {% for pitem in product_list %}
                       {% if bitem.brand == pitem.product_brand_id %}
-                      <li id="test"><a href="#"> {{pitem.product_name }}</a></li>
+                      <li id="test"><a href="/productbyname/{{pitem.product_name }}/"> {{pitem.product_name }}</a></li>
                       {% else%}
 
                       {% endif %}
@@ -106,8 +104,7 @@ li a:hover:not(.active) {
 
               {% endif %}
               {%endfor%}
-            </ul>
-          </li>
+
         </ul>
       </div>
     </div>

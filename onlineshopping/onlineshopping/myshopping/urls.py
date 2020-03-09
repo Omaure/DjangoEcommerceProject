@@ -7,4 +7,6 @@ urlpatterns=[
     # path('', views.category_list, name='list'),
     path('', views.Data_list, name='sublist'),
     path('products/', views.products, name='products'),
+    path('productbyname/<productName>/',views.displayProductData,name='productbyname'),
+
 ]

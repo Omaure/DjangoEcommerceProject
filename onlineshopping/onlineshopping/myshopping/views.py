@@ -1,5 +1,8 @@
+from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
+
 from myshopping.models import Product,Category,SubCategory,Brand
 # 
 # ,Brand
@@ -31,3 +34,15 @@ def products(request):
         'products': Product.objects.all()
     }
     return render(request, "products.html", context)
+
+
+def displayProductData(request,productName):
+    p=Product.objects.get(product_name=productName)
+    s =p.image1.path
+    context = {
+        
+        'product': Product.objects.get(product_name=productName)
+    }
+
+    return  render(request,"productbyname.html",context)  
+    

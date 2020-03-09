@@ -41,7 +41,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
    path('',include('myshopping.urls')),
 
-
+path('productbyname/<productname>/',views.displayProductData)
 
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
