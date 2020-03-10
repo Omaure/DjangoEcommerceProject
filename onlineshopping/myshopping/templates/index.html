@@ -2,11 +2,13 @@
 
 {% if request.user.is_authenticated %}
 
-<h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
-    Online shopping
-</h2>
+    <h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
+        Online shopping
+    </h2>
 
-<h1>List of products</h1>
+{#    <img src="{{ user.userprofile.avatar.url }}">#}
+
+    <h1>List of products</h1>
 
     {% for item in object_list %}
         <select>
@@ -28,7 +30,7 @@
 
 {% else %}
 
-    <a class="btn btn-primary" href="/accounts/login/">Login / Register</a>
+    <a class="btn btn-primary button" href="/accounts/login/">Login</a>
 
 {% endif %}
 

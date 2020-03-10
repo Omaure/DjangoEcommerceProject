@@ -6,5 +6,4 @@ from . import views
 urlpatterns = [
     path('', views.product_list, name='list'),
     path('accounts/', include('allauth.urls')),
-
 ]
