@@ -1,12 +1,14 @@
 <html>
 
+<a class="btn btn-primary button" href="/accounts/signup/">signup</a>
+
 {% if request.user.is_authenticated %}
 
     <h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
         Online shopping
     </h2>
 
-{#    <img src="{{ user.userprofile.avatar.url }}">#}
+    {#    <img src="{{ user.userprofile.avatar.url }}">#}
 
     <h1>List of products</h1>
 
@@ -29,9 +31,6 @@
     {% endfor %}
 
 {% else %}
-
-    <a class="btn btn-primary button" href="/accounts/login/">Login</a>
-
 {% endif %}
 
 </html>
