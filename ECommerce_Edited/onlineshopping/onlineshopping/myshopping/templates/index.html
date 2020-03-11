@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <h2 style="text-align: center;color: darkmagenta;margin: 30px;font-size: 50px;font-weight: bold;">
+    Online shopping
+  </h2>
+  <ul>
+    <li><a  href="/">Home</a></li>
+    <li><a href="products/">Products</a></li>
+    <!-- <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li> -->
+  </ul>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+    li a:hover {
+  background-color: #555;
+  color: white;
+}
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -1px;
+    }
+    .container{
+
+      margin:20px;
+    }
+  </style>
+</head>
+
+<body style="background-color:linen;"> 
+
+  <div class="container">
+    {% for item in cat_list %}
+    <h1>{{ item.cat_name}} Category</h1>
+    <img style='width:30%;border:3px solid black ;' src='{{ MEDIA_URL }}{{ item.cat_image}}'>
+    <p style="font-weight: bold; width: 30%;text-align: center;">{{ item.cat_description}}</p>
+
+    <div class="container">
+      <div class="dropdown">
+        <button style="text-align: center;font-weight: bold;border:3px solid black;"class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ item.cat_name}}
+          <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              {% for sitem in subcat_list %}
+              {% if item.cat_id == sitem.category_id_id%}
+              <li class="dropdown-submenu">
+                <a class="test" href="#">{{ sitem.subcat_name}} <span class="caret"></span></a>
+
+                <ul class="dropdown-menu">
+                  {% for bitem in brand_list %}
+                  {% if bitem.subcat_id_id == sitem.subcat_id %}
+                  <li class="dropdown-submenu">
+                    <a class="test" href="#">{{ bitem.name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      {% for pitem in product_list %}
+                      {% if bitem.brand == pitem.product_brand_id %}
+                      <li id="test"><a href="/productbyname/{{pitem.product_name }}/"> {{pitem.product_name }}</a></li>
+                      {% else%}
+
+                      {% endif %}
+                      {%endfor%}
+                    </ul>
+                  </li>
+                  {% else%}
+
+                  {% endif %}
+                  {%endfor%}
+                </ul>
+              </li>
+              {% else%}
+
+              {% endif %}
+              {%endfor%}
+
+        </ul>
+      </div>
+    </div>
+
+    {%endfor%}
+   
+    <script>
+
+      $(document).ready(function () {
+        $('.dropdown-submenu a.test').on("click", function (e) {
+          $(this).next('ul').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        });
+      });
+    </script>
+
+</body>
+
+</html>
