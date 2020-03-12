@@ -37,7 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
    'myshopping',
+=======
+    'django.contrib.sites',
+
+    'myshopping',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+>>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
 ]
 
 MIDDLEWARE = [
@@ -51,12 +60,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'onlineshopping.urls'
+<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 MEDIA_URL= "/media/"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,'templates')],
+=======
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates', 'allauth')],
+>>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,10 +81,20 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
+=======
+
+>>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 
 WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 
@@ -79,10 +105,17 @@ WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
         'NAME': 'pTest',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost'
+=======
+        'NAME': 'onlineshop',
+        'USER': 'root',
+        'PASSWORD': 'omaramora11',
+        'HOST': 'localhost'
+>>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
     }
 }
 
@@ -90,6 +123,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -125,3 +159,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SITE_ID = 1
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = "/media/"
+LOGIN_REDIRECT_URL = '/'

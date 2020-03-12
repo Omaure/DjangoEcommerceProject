@@ -1,0 +1,36 @@
+<html>
+
+<a class="btn btn-primary button" href="/accounts/signup/">signup</a>
+
+{% if request.user.is_authenticated %}
+
+    <h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
+        Online shopping
+    </h2>
+
+    {#    <img src="{{ user.userprofile.avatar.url }}">#}
+
+    <h1>List of products</h1>
+
+    {% for item in object_list %}
+        <select>
+            <option style="border:2px solid yellow;"> product Name: {{ item.product_name }}</option>
+            <option style="border:2px solid yellow;">product id:
+                {{ item.product_id }}</option>
+            <option style="border:2px solid yellow;">
+                product subcategory id: {{ item.product_subcat_id }}
+            </option>
+            <option style="border:2px solid yellow;">
+                product_price: {{ item.product_price }}
+            </option>
+            <option style="border:2px solid yellow;">
+                image: {{ item.image1 }}
+            </option>
+        </select>
+        <img style='width:190px;' src='{{ MEDIA_URL }}{{ item.image1 }}'>
+    {% endfor %}
+
+{% else %}
+{% endif %}
+
+</html>
