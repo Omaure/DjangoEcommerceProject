@@ -8,5 +8,5 @@ urlpatterns=[
     path('', views.Data_list, name='sublist'),
     path('products/', views.products, name='products'),
     path('productbyname/<productName>/',views.displayProductData,name='productbyname'),
-
+    path('search' , views.search , name='search'),
 ]

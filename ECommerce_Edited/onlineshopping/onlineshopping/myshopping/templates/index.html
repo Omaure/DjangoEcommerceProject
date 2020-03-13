@@ -8,9 +8,16 @@
   <ul>
     <li><a  href="/">Home</a></li>
     <li><a href="products/">Products</a></li>
+    <li>
+      <form action="/search" method="POST"> {% csrf_token %}
+        <input class="form" type="search" name="search" placeholder="Search" aria-label="Search">
+        <button class="btn " type="submit">Search</button>
+      </form>
+    </li>
     <!-- <li><a href="#contact">Contact</a></li>
     <li><a href="#about">About</a></li> -->
   </ul>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

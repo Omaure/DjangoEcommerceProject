@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search results</title>
+</head>
+<body>
+    <h1> You searched for:</h1>
+    {% for prod in product %}
+    <div style="border: 5px solid black;width: 90%;margin: auto;padding: 15px;">
+    
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ prod.image1}}'>
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ prod.image2}}'>
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ prod.image3}}'>
+</div>
+<div style="font-size: 30px;text-align: center;">
+    <p > Prodct name: {{prod.product_name }}</p>
+    <p> Brand: {{prod.product_brand}}</p>
+    <p> Price: {{prod.product_price}} LE</p>
+    {%endfor%}
+</body>
+</html>

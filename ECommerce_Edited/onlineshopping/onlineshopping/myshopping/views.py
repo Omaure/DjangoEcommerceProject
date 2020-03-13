@@ -46,3 +46,8 @@ def displayProductData(request,productName):
 
     return  render(request,"productbyname.html",context)  
     
+def search(request):
+    query = request.POST['search']
+    product = Product.objects.filter(product_name__icontains=query)
+    params = {'product':product}
+    return render(request, 'search.html', params)
