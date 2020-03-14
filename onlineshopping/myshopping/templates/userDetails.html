@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+
+    {{ user.userprofile.DOB }}
+    {{ user.userprofile.location }}
+    <img src="{{ user.userprofile.avatar.url }}">
+
+{% else %}
+
+    <p> Please Login or Signup </p>
+    <a class="btn btn-primary button" href="/accounts/login/">Login</a>
+    <a class="btn btn-primary button" href="/accounts/signup/">SignUp</a>
+
+
+{% endif %}
+
+
+</body>
+</html>
