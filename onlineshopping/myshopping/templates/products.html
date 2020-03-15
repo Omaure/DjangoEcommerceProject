@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <p style="font-size: 30px;">
+   ALL Products List
+</p>
+<body>
+    {% for pitem in products %}
+    <div style="border: 5px solid black;width: 90%;margin: auto;padding: 15px;">
+    
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ pitem.image1}}'>
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ pitem.image2}}'>
+    <img style='width:30%;' src='{{ MEDIA_URL }}{{ pitem.image3}}'>
+</div>
+<div style="font-size: 30px;text-align: center;">
+    <p > Prodct name: {{pitem.product_name }}</p>
+    <p> Brand: {{pitem.product_brand}}</p>
+    <p> Price: {{pitem.product_price}} LE</p>
+    {%endfor%}
+</div>
+</body>    
+</html>
