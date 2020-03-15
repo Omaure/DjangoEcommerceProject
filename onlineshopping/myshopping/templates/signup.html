@@ -18,7 +18,7 @@
 {% block main %}
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form|crispy }}
         <input type="submit"/>
     </form>
 {% endblock %}
