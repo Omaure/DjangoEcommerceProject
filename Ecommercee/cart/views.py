@@ -1,23 +1,9 @@
-<<<<<<< HEAD
-# from django.shortcuts import render,get_object_or_404,redirect
-# from .models import Product
-# from cart.models import Order,OrderItem
-# # Create your views here.
-# def add_to_card(request,slug):
-#     item=get_object_or_404(Product,slug=slug)
-#     order_item=OrderItem.objects.Create(item=item,ordered=False)
-#     order=Order.objects.Create(user=request.user)
-#     order.add_to_card(order_item)
-#     return redirect("myshopping:product",kwargs={
-#         'slug':slug
-#     })
-=======
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from myshopping.models import Product
+from products.models import Product
 from cart.models import Cart
 from cart.models import Order
-from django.contrib import messages
+from django.contrib.messages import constants as messages
 from django.shortcuts import redirect
 from django.views.generic import ListView
 
@@ -38,17 +24,17 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity was updated.")
-            return redirect("mainapp:list")
+            return redirect("mainapp:home")
         else:
             order.orderitems.add(order_item)
             messages.info(request, "This item was added to your cart.")
-            return redirect("mainapp:list")
+            return redirect("mainapp:home")
     else:
         order = Order.objects.create(
             user=request.user)
         order.orderitems.add(order_item)
         messages.info(request, "This item was added to your cart.")
-        return redirect("mainapp:list")
+        return redirect("mainapp:home")
 
 # Remove item from cart
 
@@ -77,15 +63,14 @@ def remove_from_cart(request, slug):
             )[0]
             order.orderitems.remove(order_item)
             messages.info(request, "This item was removed from your cart.")
-            return redirect("mainapp:list")
+            return redirect("mainapp:home")
         else:
             messages.info(request, "This item was not in your cart")
-            return redirect("mainapp:list")
+            return redirect("mainapp:home")
     else:
         messages.info(request, "You do not have an active order")
-        return redirect("core:list")
+        return redirect("core:home")
 
-# class Home(ListView):
-#     model = Product
-#     template_name = 'products/home.html'
->>>>>>> TestBranch3
+class Home(ListView):
+    model = Product
+    template_name = 'products/home.html'

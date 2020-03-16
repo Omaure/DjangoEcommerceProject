@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <html>
 
 <a class="btn btn-primary button" href="/accounts/signup/">signup</a>
@@ -249,4 +250,67 @@ padding-left: 80px;
 </body>
 >>>>>>> TestBranch4
 
+=======
+<!-- <html>
+<h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
+    Online shopping
+</h2>
+
+<h1>List of products</h1>
+
+{% for item in object_list %}
+<select >
+<option style="border:2px solid yellow;"> product Name: {{ item.product_name }}</option>
+<option style="border:2px solid yellow;">product id:
+{{ item.product_id}}</option>
+<option style="border:2px solid yellow;">
+    product subcategory id: {{ item.product_subcat_id}}
+</option>
+<option style="border:2px solid yellow;">
+    product_price: {{ item.product_price}}
+    </option>
+    <option style="border:2px solid yellow;">
+       image: {{ item.image1}}
+        </option>
+    </select>
+{% endfor %}
+</table>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Djago Ecommer | manascode.com</title>
+</head>
+<body>
+    <h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
+        Online shopping
+    </h2>
+    
+    <h1>List of products</h1>
+  <div class="container">
+    <div class="row">
+      {% for item in object_list %}
+      <div class="col-md-4 col-sm-12 col-lg-3 m-1">
+              <div class="card" style='width:100%; height:300px;'>
+                <img src="media/{{ item.image1 }}" style="width:100%;" class="card-img-top" alt="{{ item.product_name }}">
+                      <div class="card-body">
+                        <h5 class="card-title"> {{ item.product_name }}</h5>
+                        <p class="card-text">{{ item.product_price }}</p>
+                      </div>
+                  <div class='card-footer text-center'>
+                    <a href="cart/{{ item.slug }}" class="btn btn-success">Add to Cart</a>
+                    <a href="remove/{{ item.slug }}" class="btn btn-danger">Remove from Cart</a>
+                  </div>
+               </div>
+        </div>
+      {% endfor %}
+  </div>
+  </div>
+</body>
+>>>>>>> TestBranch3
 </html>

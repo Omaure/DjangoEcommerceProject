@@ -4,7 +4,12 @@ from django.contrib import admin
 from django.urls import path, include
 from myshopping import views
 from . import views
+<<<<<<< HEAD
 from myshopping.views import login_view,logout_view,register_view
+=======
+from cart.views import add_to_cart, remove_from_cart
+app_name= 'mainapp'
+>>>>>>> TestBranch3
 
 from allauth.account.views import LoginView, SignupView
 
@@ -24,6 +29,7 @@ from allauth.account.views import LoginView, SignupView
 
 urlpatterns = [
     path('', views.product_list, name='list'),
+<<<<<<< HEAD
     path('accounts/login/', login_view),
     path('accounts/signup/', register_view),
     path('accounts/logout/', logout_view)
@@ -46,3 +52,8 @@ urlpatterns=[
     path('search/', views.BootstrapFilterView, name='search_results'),
 ]
 >>>>>>> TestBranch4
+=======
+    path('cart/<slug>', add_to_cart, name='cart'),
+    path('remove/<slug>', remove_from_cart, name='remove-cart'),
+]
+>>>>>>> TestBranch3
