@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,10 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD:onlineshopping/onlineshopping/settings.py
 <<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
    'myshopping',
 <<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
 =======
+=======
+>>>>>>> LoginandSignupStyling:onlineshopping/onlineshopping/onlineshopping/settings.py
     'django.contrib.sites',
 
     'myshopping',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+<<<<<<< HEAD:onlineshopping/onlineshopping/settings.py
 <<<<<<< HEAD
 >>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
 =======
@@ -62,6 +64,9 @@ INSTALLED_APPS = [
 =======
     'bootstrap4',
     'crispy_forms',
+=======
+]
+>>>>>>> LoginandSignupStyling:onlineshopping/onlineshopping/onlineshopping/settings.py
 
 >>>>>>> TestBranch1
 ]
@@ -77,19 +82,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'onlineshopping.urls'
-<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
-MEDIA_URL= "/media/"
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
-=======
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates', 'allauth')],
->>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,10 +94,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
-=======
 
->>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
             ],
         },
     },
@@ -115,13 +108,13 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD:onlineshopping/onlineshopping/settings.py
 <<<<<<< HEAD
 <<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
         'NAME': 'pTest',
@@ -129,10 +122,13 @@ DATABASES = {
         'PASSWORD':'',
         'HOST':'localhost'
 =======
+=======
+>>>>>>> LoginandSignupStyling:onlineshopping/onlineshopping/onlineshopping/settings.py
         'NAME': 'onlineshop',
         'USER': 'root',
         'PASSWORD': 'omaramora11',
         'HOST': 'localhost'
+<<<<<<< HEAD:onlineshopping/onlineshopping/settings.py
 >>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
 =======
         'NAME': 'onlineShopping',
@@ -140,10 +136,10 @@ DATABASES = {
         'PASSWORD': '1234',
         'HOST': 'localhost',
 >>>>>>> TestBranch3
+=======
+>>>>>>> LoginandSignupStyling:onlineshopping/onlineshopping/onlineshopping/settings.py
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -164,7 +160,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -177,7 +172,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
