@@ -2,10 +2,15 @@
 from django.db import models
 <<<<<<< HEAD
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 
 =======
 >>>>>>> TestBranch4
 
+=======
+import datetime
+from datetime import date
+>>>>>>> TestBranch1
 # Create your models here.
 # -*- coding: utf-8 -*-
 
@@ -64,6 +69,8 @@ class Product(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField()
+    DOB = models.DateTimeField(default=datetime.date.today, blank=True)
+    location = models.CharField(max_length=200, default="None")
 
     def __str__(self):
         return self.user.username

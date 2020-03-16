@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+<<<<<<< HEAD
 >>>>>>> TestBranch1:onlineshopping/onlineshopping/settings.py
 =======
    'crispy_forms',
@@ -58,6 +59,11 @@ INSTALLED_APPS = [
 =======
     'cart',
 >>>>>>> TestBranch3
+=======
+    'bootstrap4',
+    'crispy_forms',
+
+>>>>>>> TestBranch1
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -184,6 +190,7 @@ SITE_ID = 1
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = "/media/"
 LOGIN_REDIRECT_URL = '/'
+<<<<<<< HEAD
 =======
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -198,3 +205,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = '/media/'
 >>>>>>> TestBranch3
+=======
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+>>>>>>> TestBranch1
