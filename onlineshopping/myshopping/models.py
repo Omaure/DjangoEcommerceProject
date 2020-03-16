@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 from django.db import models
 
 
@@ -21,7 +21,7 @@ class SubCategory(models.Model):
     subcat_description = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.brand_name
+        return self.subcat_name
 
 
 class Brand(models.Model):
@@ -38,7 +38,8 @@ class Product(models.Model):
     product_id = models.IntegerField()
     product_subcat_id = models.IntegerField()
     product_price = models.DecimalField(max_digits=5, decimal_places=2)
-    image1 = models.ImageField(upload_to='image1')
-
+    image1 = models.ImageField(upload_to='products/', blank=True)
+    slug = models.SlugField()
+    
     def __str__(self):
         return self.product_name
