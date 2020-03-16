@@ -28,7 +28,7 @@ def add_to_cart(request, slug):
         else:
             order.orderitems.add(order_item)
             messages.info(request, "This item was added to your cart.")
-            return redirect("mainapp:home")
+            return redirect("mainapp:list")
     else:
         order = Order.objects.create(
             user=request.user)
@@ -66,7 +66,7 @@ def remove_from_cart(request, slug):
             return redirect("mainapp:list")
         else:
             messages.info(request, "This item was not in your cart")
-            return redirect("mainapp:home")
+            return redirect("mainapp:list")
     else:
         messages.info(request, "You do not have an active order")
         return redirect("core:list")
