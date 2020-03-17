@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.views.generic import ListView
 
-# Create your views here.
 # Add to Cart View
 
 def add_to_cart(request, slug):
@@ -71,6 +70,19 @@ def remove_from_cart(request, slug):
         messages.info(request, "You do not have an active order")
         return redirect("core:list")
 
-# class Home(ListView):
-#     model = Product
-#     template_name = 'products/home.html'
+# Cart View
+
+def CartView(request):
+
+    user = request.user
+
+    carts = Cart.objects.filter(user=user)
+    orders = Order.objects.filter(user=user, ordered=False)
+
+    if carts.exists():
+        order = orders[0]
+        return render(request, 'cart/home.html', {"carts": carts, 'order': order})
+		
+    else:
+        messages.warning(request, "You do not have an active order")
+        return redirect("core:list")
