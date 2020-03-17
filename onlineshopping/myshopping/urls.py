@@ -9,7 +9,7 @@ urlpatterns=[
     # ex: /library/
     # path('', views.index, name='index'),
     path('', views.product_list, name='list'),
-    path('cart/<slug>', add_to_cart, name='cart'),
-    path('remove/<slug>', remove_from_cart, name='remove-cart'),
+    path('cart/<product_id>', add_to_cart, name='cart'),
+    path('remove/<product_id>', remove_from_cart, name='remove-cart'),
     path('cartview/', CartView, name='cart-home'),
 ]

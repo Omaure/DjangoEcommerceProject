@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Djago Ecommer | manascode.com</title>
+  <title>Cart Page</title>
 </head>
 <body>
 {% block content %}
@@ -40,8 +40,8 @@
     <tr>
       <th scope="row"></th>
       <td colspan="3" class="text-right ">
-        <button class="btn btn-warning mr-4">Continue Shoping</button>
-        <button class="btn btn-success mr-4">Proceed To Checkout</button>
+        <a href="{% url 'mainapp:list' %}" class="btn btn-warning mr-4">Continue Shoping</a>
+        <a href="{% url 'mainapp:list' %}" class="btn btn-success mr-4">Proceed To Checkout</a>
       </td>
     </tr>
   </tbody>
