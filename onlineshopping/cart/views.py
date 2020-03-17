@@ -21,11 +21,10 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.views.generic import ListView
 
-# Create your views here.
 # Add to Cart View
 
-def add_to_cart(request, slug):
-    item = get_object_or_404(Product, slug=slug)
+def add_to_cart(request, product_id):
+    item = get_object_or_404(Product, product_id=product_id)
     order_item, created = Cart.objects.get_or_create(
         item=item,
         user=request.user
@@ -34,7 +33,7 @@ def add_to_cart(request, slug):
     if order_qs.exists():
         order = order_qs[0]
         # check if the order item is in the order
-        if order.orderitems.filter(item__slug=item.slug).exists():
+        if order.orderitems.filter(item__product_id=item.product_id).exists():
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity was updated.")
@@ -52,8 +51,8 @@ def add_to_cart(request, slug):
 
 # Remove item from cart
 
-def remove_from_cart(request, slug):
-    item = get_object_or_404(Product, slug=slug)
+def remove_from_cart(request, product_id):
+    item = get_object_or_404(Product, product_id=product_id)
     cart_qs = Cart.objects.filter(user=request.user, item=item)
     if cart_qs.exists():
         cart = cart_qs[0]
@@ -70,7 +69,7 @@ def remove_from_cart(request, slug):
     if order_qs.exists():
         order = order_qs[0]
         # check if the order item is in the order
-        if order.orderitems.filter(item__slug=item.slug).exists():
+        if order.orderitems.filter(item__product_id=item.product_id).exists():
             order_item = Cart.objects.filter(
                 item=item,
                 user=request.user,
@@ -85,7 +84,26 @@ def remove_from_cart(request, slug):
         messages.info(request, "You do not have an active order")
         return redirect("core:list")
 
+<<<<<<< HEAD
 # class Home(ListView):
 #     model = Product
 #     template_name = 'products/home.html'
+>>>>>>> TestBranch3
+=======
+# Cart View
+
+def CartView(request):
+
+    user = request.user
+
+    carts = Cart.objects.filter(user=user)
+    orders = Order.objects.filter(user=user, ordered=False)
+
+    if carts.exists():
+        order = orders[0]
+        return render(request, 'cart/home.html', {"carts": carts, 'order': order})
+		
+    else:
+        messages.warning(request, "You do not have an active order")
+        return redirect("core:list")
 >>>>>>> TestBranch3

@@ -5,9 +5,13 @@ from django.urls import path, include
 from myshopping import views
 from . import views
 <<<<<<< HEAD
+<<<<<<< HEAD
 from myshopping.views import login_view,logout_view,register_view
 =======
 from cart.views import add_to_cart, remove_from_cart
+=======
+from cart.views import CartView, add_to_cart, remove_from_cart
+>>>>>>> TestBranch3
 app_name= 'mainapp'
 >>>>>>> TestBranch3
 
@@ -29,6 +33,7 @@ from allauth.account.views import LoginView, SignupView
 
 urlpatterns = [
     path('', views.product_list, name='list'),
+<<<<<<< HEAD
 <<<<<<< HEAD
     path('accounts/login/', login_view),
     path('accounts/signup/', register_view),
@@ -55,5 +60,11 @@ urlpatterns=[
 =======
     path('cart/<slug>', add_to_cart, name='cart'),
     path('remove/<slug>', remove_from_cart, name='remove-cart'),
+]
+>>>>>>> TestBranch3
+=======
+    path('cart/<product_id>', add_to_cart, name='cart'),
+    path('remove/<product_id>', remove_from_cart, name='remove-cart'),
+    path('cartview/', CartView, name='cart-home'),
 ]
 >>>>>>> TestBranch3
