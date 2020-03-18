@@ -39,6 +39,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.conf.urls import url, include
 from myshopping import views
 from django.conf import settings
@@ -59,8 +60,18 @@ urlpatterns = [
    path('',include('myshopping.urls')),
 
 path('productbyname/<productname>/',views.displayProductData)
+=======
+from django.conf.urls import url, include
+from myshopping import views, urls
+from cart import urls
+from myshopping.views import displayProductData
+>>>>>>> TestBranch4
 
+urlpatterns = [
+                  path('admin/', admin.site.urls),
+                  path('', include('myshopping.urls')),
 
+<<<<<<< HEAD
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 >>>>>>> TestBranch4
@@ -69,3 +80,6 @@ path('productbyname/<productname>/',views.displayProductData)
      path('', include('myshopping.urls', namespace='mainapp')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 >>>>>>> TestBranch3
+=======
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> TestBranch4

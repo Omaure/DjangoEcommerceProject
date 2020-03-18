@@ -79,6 +79,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q # new
+from django.shortcuts import render
+
 
 from myshopping.models import Product,Category,SubCategory,Brand
 # 
@@ -86,8 +88,6 @@ from myshopping.models import Product,Category,SubCategory,Brand
 from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 
-def index(request,**Kwargs):
-    return render(request, 'index.html')  
 
 def category_list(request):
     cat_list= Category.objects.all()
@@ -118,7 +118,8 @@ def displayProductData(request,productName):
     s =p.image1.path
     context = {
         
-        'product': Product.objects.get(product_name=productName)
+        'product': Product.objects.get(product_name=productName),
+        'brand_list':Brand.objects.all()
     }
 
     return  render(request,"productbyname.html",context)  
@@ -166,4 +167,10 @@ def BootstrapFilterView(request):
     return render(request, "searchresults.html", context) 
     
 
+<<<<<<< HEAD
+>>>>>>> TestBranch4
+=======
+
+def index(request, **Kwargs):
+    return render(request, 'index.html')
 >>>>>>> TestBranch4

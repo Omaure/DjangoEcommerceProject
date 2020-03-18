@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
 <<<<<<< HEAD:onlineshopping/onlineshopping/settings.py
 <<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
    'myshopping',
@@ -69,6 +70,14 @@ INSTALLED_APPS = [
 >>>>>>> LoginandSignupStyling:onlineshopping/onlineshopping/onlineshopping/settings.py
 
 >>>>>>> TestBranch1
+=======
+    'myshopping',
+    'crispy_forms',
+    'bootstrap4',
+    'accounts',
+    'cart'
+
+>>>>>>> TestBranch4
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -82,10 +91,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'onlineshopping.urls'
+<<<<<<< HEAD
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates', 'allauth')],
+=======
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = "/media/"
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+>>>>>>> TestBranch4
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,10 +122,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 
+<<<<<<< HEAD
 )
 
 WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 
+=======
+>>>>>>> TestBranch4
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -118,6 +139,7 @@ DATABASES = {
 <<<<<<< HEAD
 <<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
         'NAME': 'pTest',
+<<<<<<< HEAD
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost'
@@ -138,6 +160,11 @@ DATABASES = {
 >>>>>>> TestBranch3
 =======
 >>>>>>> LoginandSignupStyling:onlineshopping/onlineshopping/onlineshopping/settings.py
+=======
+        'USER': 'root',
+        'PASSWORD': 'omaramora11',
+        'HOST': 'localhost'
+>>>>>>> TestBranch4
     }
 }
 
@@ -190,6 +217,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+<<<<<<< HEAD
 >>>>>>> TestBranch4:onlineshopping/onlineshopping/settings.py
 =======
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -202,3 +230,5 @@ MEDIA_URL = '/media/'
 =======
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 >>>>>>> TestBranch1
+=======
+>>>>>>> TestBranch4

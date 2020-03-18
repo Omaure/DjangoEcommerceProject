@@ -1,6 +1,7 @@
 # from __future__ import unicode_literals
 from django.db import models
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.contrib.auth.models import User
 <<<<<<< HEAD
 
@@ -11,6 +12,11 @@ from django.contrib.auth.models import User
 import datetime
 from datetime import date
 >>>>>>> TestBranch1
+=======
+from django.contrib.auth.models import User
+import datetime
+from datetime import date
+>>>>>>> TestBranch4
 # Create your models here.
 # -*- coding: utf-8 -*-
 
@@ -103,6 +109,7 @@ class Product(models.Model):
     product_id = models.IntegerField(primary_key=True)
     product_brand=models.ForeignKey(Brand,on_delete=models.CASCADE)
     product_price=models.IntegerField()
+    slug = models.SlugField()
     image1=models.ImageField(upload_to='gallery')
     image2=models.ImageField(upload_to='gallery')
     image3=models.ImageField(upload_to='gallery')
@@ -111,4 +118,15 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
         
+<<<<<<< HEAD
+>>>>>>> TestBranch4
+=======
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField()
+    DOB = models.DateTimeField(default=datetime.date.today, blank=True)
+    location = models.CharField(max_length=200, default="None")
+
+    def __str__(self):
+        return self.user.username
 >>>>>>> TestBranch4

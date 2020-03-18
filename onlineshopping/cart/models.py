@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # from __future__ import unicode_literals
 # from django.db import models
 # from myshopping.models import Product
@@ -22,6 +23,8 @@
 #       def __str__(self):
 #           return '{0}-{1}'.format(self.ref_code)                  
 =======
+=======
+>>>>>>> TestBranch4
 from django.db import models
 from django.contrib.auth import get_user_model
 from myshopping.models import Product
@@ -56,9 +59,12 @@ class Order(models.Model):
     
     def __str__(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         return self.user
 >>>>>>> TestBranch3
 =======
+=======
+>>>>>>> TestBranch4
         return self.user.username
 
 
@@ -67,5 +73,9 @@ class Order(models.Model):
         for order_item in self.orderitems.all():
             total += order_item.get_total()
         
+<<<<<<< HEAD
         return total
 >>>>>>> TestBranch3
+=======
+        return total
+>>>>>>> TestBranch4

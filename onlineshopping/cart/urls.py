@@ -1,12 +1,13 @@
 # from django.contrib import admin
 # from django.urls import path
-# from cart import views
+# from myshopping import views
 # from . import views
-# from .views import add_to_cart
+# from cart.views import CartView, add_to_cart, remove_from_cart
 
-# urlpatterns=[
-#     # path('', views.category_list, name='list'),
-#     path('add_to_cart/<slug>/',views.add_to_cart, name='add'),
+# from myshopping import urls
 
-
+# urlpatterns = [
+#     path('cart/<product_name>', add_to_cart, name='cart'),
+#     path('remove/<product_name>', remove_from_cart, name='remove-cart'),
+#     path('cartview/', CartView, name='cart-home'),
 # ]
