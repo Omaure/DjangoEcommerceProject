@@ -1,0 +1,86 @@
+
+<style>
+*{
+  font-size: large;
+font-weight: bold;
+}
+</style>
+
+     <ul>
+  {% for p in queryset %}
+  {% if p.product_name  %}
+     <li >Product Name:{{ p.product_name }} </li>
+      <li>Price: {{ p.product_price }} LE </li>
+      <div>
+      <img src='{{ MEDIA_URL }}{{ p.image1}}'>
+      <img src='{{ MEDIA_URL }}{{ p.image2}}'>
+      <img src='{{ MEDIA_URL }}{{ p.image3}}'>
+      </div>
+    {%endif%}
+  {% endfor %}
+  
+  {% for c in queryset  %}
+  {% if c.cat_name  %}
+  <img src='{{ MEDIA_URL }}{{ c.cat_image}}'ALIGN="right">
+  Category Name:
+  <h1 href="">{{ c.cat_name }} </h1>
+
+    <h1 class="test" href="#">{{ s.subcat_name}} <span class="caret"></span></h1>
+   <div>
+      <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+               {% for s in subCat %}
+               {% if c.cat_id == s.category_id_id%}
+              <li class="dropdown-submenu">
+                <p class="test" href="#">{{ s.subcat_name}} <span class="caret"></span></p>
+                <ul class="dropdown-menu">
+                  {% for bitem in brands %}
+                  {% if bitem.subcat_id_id == s.subcat_id %}
+                  <li class="dropdown-submenu">
+                    <p class="test" href="#">{{ bitem.name}} <span class="caret"></span></p>
+                    <ul class="dropdown-menu">
+                      {% for pitem in products %}
+                      {% if bitem.brand == pitem.product_brand_id %}
+                      <li id="test"><a href="/productbyname/{{pitem.product_name }}/"> {{pitem.product_name }}</a></li>
+                      {% else%}
+
+                      {% endif %}
+                      {%endfor%}
+                    </ul>
+                  </li>
+                  {% else%}
+
+                  {% endif %}
+                  {%endfor%}
+                </ul>
+              </li>
+                </li>
+               
+{%endif%}
+      {%endfor%}
+  
+
+   </div>
+   {%endif%}
+   {% endfor %}
+   {% for b in queryset  %}
+   {% if b.name  %}
+   BrandName:
+   
+    <div>
+    <img src='{{ MEDIA_URL }}{{ b.brand_img}}'>
+    <ul class="dropdown-menu">
+      {% for pitem in products %}
+      {% if b.brand == pitem.product_brand_id %}
+      <li id="test"><a href="/productbyname/{{pitem.product_name }}/"> {{pitem.product_name }}</a></li>
+      {% else%}
+      {% endif %}
+      {%endfor%}
+    </ul>
+    </div>
+    {%endif%}
+    {% endfor %}
+
+</ul> 
+
+

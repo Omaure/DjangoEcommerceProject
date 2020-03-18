@@ -1,0 +1,122 @@
+<style>
+    @import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+    
+    ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 15px ;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.icon-bar {
+  width: 40%;
+  background-color: lightseagreen;;
+  overflow: auto;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ border-radius:7px ;
+}
+
+.icon-bar a {
+  float: left;
+
+  text-align: center;
+  padding: 12px ;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #555;
+}
+.body{
+
+  background-color:  	#141518;
+}
+li a.active {
+  background-color: #4CAF50;
+  color: #811f1f;
+}
+
+li a:hover:not(.active) {
+  background-color: #811f1f;
+  color: white;
+}
+
+    li a:hover {
+  background-color: #555;
+  color: white;
+}
+    .header {
+      text-align: center;
+      background: lightseagreen;
+      height: 90px;
+      width: 590px;
+      padding: 15px ;
+      border-radius: 15px;
+      font-family:'Droid Arabic Naskh';
+      /* margin-left: 750px ; */
+      margin :50px auto;
+      color: WHITE;
+      text-shadow:2px 2px black;
+      font-size: 50px;
+      font-weight: bold;
+    }
+  .topbox
+  {
+  
+  border:5px solid lightseagreen;
+  color:  	#811f1f;
+  font-size: large;
+  }
+    
+    
+  </style>
+  <h1 >
+         <div class="icon-bar">
+        <a class="active" href="/"><i class="fa fa-home"></i></a> 
+        <a  ><i class="fa fa-envelope"> soa2@gmail.com</i></a> 
+      </div>  
+      <a style="font-size: large;" class="btn btn-primary button" href="/accounts/signup/">signup</a>
+    <a style="font-size: large;"class="btn btn-primary button" href="/accounts/login/">login</a></h1>
+ 
+<h2 class="header";>
+Soa2 El-Gom3a
+  </h2>
+  
+  <form action="{% url 'search_results' %}"  method="get">
+    <input style="width:25%" name="q" type="text" placeholder="What do you want?">
+
+  </form>
+  <ul >
+    <li  class="topbox"><a  href="/">Home</a></li>
+    <li  class="topbox"><a href="/products/">Products</a></li>
+    <!-- <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li> -->
+  </ul>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {% if messages %}
+  <ul  style ="width:20%;font-size: large;"class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}

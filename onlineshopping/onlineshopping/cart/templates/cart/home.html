@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Cart Page</title>
+</head>
+<body>
+{% block content %}
+<div class="container my-5">
+<div class="my-5">
+	<h2>You Cart</h2>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for cart in carts %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ cart.item.product_name }}</td>
+      <td>{{ cart.quantity }}</td>
+      <td>${{ cart.get_total }}</td>
+     <td> <a href="/products/cartview/remove/{{ cart.item.product_name }}" class="btn btn-danger">Remove from Cart</a>
+     </td>
+    </tr>
+	{% endfor %}
+    <tr>
+      <th scope="row"></th>
+      <td colspan="2">Total</td>
+       <td>${{ order.get_totals}}</td> 
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td colspan="3" class="text-right ">
+        <a href="{% url 'products' %}" class="btn btn-warning mr-4">Continue Shoping</a>
+        <a href="{% url 'products' %}" class="btn btn-success mr-4">Proceed To Checkout</a>
+       
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
+</body>
+</html>

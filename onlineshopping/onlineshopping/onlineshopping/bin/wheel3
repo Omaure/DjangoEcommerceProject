@@ -1,4 +1,4 @@
-#!/home/sarahmohamed/django/onlineshopping/onlineshopping/bin/python
+#!/home/sarahmohamed/django/onlineshopping/onlineshopping/onlineshopping/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
