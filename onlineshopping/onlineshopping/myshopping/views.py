@@ -5,8 +5,6 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q # new
 from django.shortcuts import render
-
-
 from myshopping.models import Product,Category,SubCategory,Brand
 # 
 # ,Brand

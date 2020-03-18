@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib import messages
 
 # Create your views here.
 from django.contrib.auth import (
@@ -47,6 +48,14 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+def delete_profile(request):
+    user = request.user
+    user.is_active = False
+    user.save()
+    messages.success(request, 'Profile successfully disabled.')
+    return redirect('/')
+
 def details(request):
     userdetails = UserProfile.objects.all()
     context = {'object_list': userdetails}
