@@ -1,8 +1,5 @@
-# from django.contrib import admin
+from django.contrib import admin
+from cart.models import Cart,Order
 
-# # Register your models here.
-
-# # Register your models here.
-# from .models import Order,OrderItem
-# admin.site.register(Order)
-# admin.site.register(OrderItem)
+admin.site.register(Cart)
+admin.site.register(Order)
