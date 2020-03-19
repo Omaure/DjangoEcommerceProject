@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 import datetime
 from datetime import date
 from django.db.models.signals import post_save
+from PIL import Image
 # Create your models here.
 # -*- coding: utf-8 -*-
 
@@ -71,3 +72,13 @@ class UserProfile(models.Model):
         if kwargs['created']:
             user_profile = UserProfile.objects.create(user=kwargs['instance'])
     post_save.connect(create_profile, sender=User)
+
+    def save(self):
+        super().save()
+
+        img = Image.open(self.avatar.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.avatar.path)
+

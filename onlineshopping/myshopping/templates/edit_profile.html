@@ -7,11 +7,14 @@
 </head>
 
 <body>
-    <div class="card" style="display: block; margin-top: 30px; margin-left: auto; margin-right: auto; width: 30%;">
-        <form method="post" style="margin-top: 20px;">
+    {% load crispy_forms_tags %}
+    <div  style="display: block; margin-top: 30px; margin-left: auto; margin-right: auto; width: 30%;">
+        <form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button  style="text-align: center; display: block; margin-left: auto; margin-right: auto; width: 30%;" class="btn btn-success" type="submit">Submit</button>
+            {{ form|crispy }}
+            <br>
+            {{ p_form|crispy }}
+            <button  style="text-align: center; display: block; margin-top: 30px; margin-left: auto; margin-right: auto; width: 30%;" class="btn btn-success" type="submit">Update</button>
         </form>
       </div>
       

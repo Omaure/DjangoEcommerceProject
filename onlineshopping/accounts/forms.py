@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
+from myshopping.models import UserProfile
 from django.contrib.auth import (
     authenticate,
     get_user_model
@@ -62,3 +63,13 @@ class EditProfileForm(UserChangeForm):
             'email',
             'password'
             )
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [
+            'avatar',
+            'address',
+            'address2',
+            'phone'
+            ]

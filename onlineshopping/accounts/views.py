@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserChangeForm
-from accounts.forms import EditProfileForm
+from accounts.forms import EditProfileForm, ProfileUpdateForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -61,13 +62,21 @@ def userpage(request):
     return render(request, 'userpage.html', args)
 
 def editprofile(request):
+    
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
-        
-        if form.is_valid():
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
+        if form.is_valid() and p_form.is_valid():
             form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
             return redirect('/userpage')
     else:
         form = EditProfileForm(instance=request.user)
-        args = {'form': form}
+        p_form = ProfileUpdateForm(instance=request.user.userprofile)
+        args = {
+            'form': form,
+            'p_form': p_form
+        }
         return render(request, 'edit_profile.html', args)
+
