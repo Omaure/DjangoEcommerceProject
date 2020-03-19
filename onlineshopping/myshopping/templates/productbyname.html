@@ -1,0 +1,81 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Djago Ecommer | manascode.com</title>
+  </head>
+  <body>
+    <h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
+        Online shopping
+    </h2>
+    
+
+<style>
+     .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+.checked {
+  color: orange;
+}
+</style>
+
+<div class="container">
+  <div class="row">
+    {% for bitem in brand_list %}
+    {% if bitem.brand == product.product_brand_id  %}
+    <div class="card"  style='width:30%;'>
+    
+    <img style='width:70% ;margin: auto; padding: 30px;'; src='{{ MEDIA_URL }}{{ bitem.brand_img}}'>
+    <div class="card-body">
+      <h5 class="card-title"> {{ product.product_name }}</h5>
+      <p class="card-text">{{ product.product_price }} LE </p>
+      
+    </div>
+    <div class='card-footer text-center'>
+      <a href="cart/{{ product.product_name }}" class="btn btn-success">Add to Cart</a>
+      <a href="remove/{{ product.product_name }}" class="btn btn-danger">Remove from Cart</a>
+    </div>
+    
+  </div>
+   {%else%}
+
+    {%endif%}
+    {%endfor%}
+    <div class="col-md-4 col-sm-12 col-lg-3 m-1"></div>
+
+
+    <div class="card" style='width:100%; '>
+              <img style='width:100%;'class="card-img-top" alt="{{ product.product_name }}" src='{{ MEDIA_URL }}{{ product.image1}} '>  
+              <img style='width:100%;'class="card-img-top" alt="{{ product.product_name }}" src='{{ MEDIA_URL }}{{ product.image2}} '>  
+    <img style='width:100%;'class="card-img-top"  src='{{ MEDIA_URL }}{{ product.image3}}'>
+    
+  </div>
+  </div>
+  </div>
+  
+</div>
+    </html>

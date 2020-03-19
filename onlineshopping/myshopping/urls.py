@@ -1,15 +1,29 @@
 from django.contrib import admin
 from django.urls import path
 from myshopping import views
+from django.conf.urls import url, include
 from . import views
+from .views import SearchResultsView, BootstrapFilterView
+from accounts.views import login_view, register_view, logout_view, userpage, editprofile
 from cart.views import CartView, add_to_cart, remove_from_cart
-app_name= 'mainapp'
+from myshopping.views import products
+from myshopping import urls
 
-urlpatterns=[
-    # ex: /library/
-    # path('', views.index, name='index'),
-    path('', views.product_list, name='list'),
-    path('cart/<product_id>', add_to_cart, name='cart'),
-    path('remove/<product_id>', remove_from_cart, name='remove-cart'),
-    path('cartview/', CartView, name='cart-home'),
+urlpatterns = [
+
+    path('', views.Data_list, name='sublist'),
+    path('products/', products, name='products'),
+    path('userpage/', userpage),
+    path('userpage/edit/', editprofile),
+    path('productbyname/<productName>/', views.displayProductData, name='productbyname'),
+    # path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('search/', views.BootstrapFilterView, name='search_results'),
+    path('accounts/login/', login_view),
+    path('accounts/signup/', register_view),
+    path('accounts/logout/', logout_view),
+    path('products/cart/<product_name>', add_to_cart, name='cart'),
+    path('products/remove/<product_name>', remove_from_cart, name='remove-cart'),
+    path('products/cartview/', CartView, name='cart-home'),
+    path('productbyname/$/cart/<product_name>', add_to_cart, name='cart'),
+
 ]

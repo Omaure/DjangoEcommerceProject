@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="card" style="width: 18rem; text-align: center; display: block; margin-left: auto; margin-right: auto; width: 30%;">
+        <img class="card-img-top" src="{{ MEDIA_URL }}{{ user.userprofile.avatar}}">
+        <div class="card-body">
+            <h3 contenteditable="true" class="card-title"> {{user.userprofile}}</h5>
+            <p contenteditable="true">Phone: {{user.userprofile.phone}}</p>
+            <p contenteditable="true">Email: {{user.email}}</p>
+            <p contenteditable="true">Adress 1: {{user.userprofile.address}} </p>
+            <p contenteditable="true">Adress 2: {{user.userprofile.address2}} </p>
+            <a href="edit/" class="btn btn-primary">Save Changes</a>
+        </div>
+      </div>
+      
+</body>
+
+</html>
