@@ -6,6 +6,7 @@ from . import views
 from .views import SearchResultsView, BootstrapFilterView
 from accounts.views import login_view, register_view, logout_view, delete_profile
 from cart.views import CartView, add_to_cart, remove_from_cart
+from favourites.views import FavView, add_to_fav, remove_from_fav
 from myshopping.views import products
 from myshopping import urls
 
@@ -20,6 +21,10 @@ urlpatterns = [
     path('accounts/signup/', register_view),
     path('accounts/logout/', logout_view),
     path('accounts/delete/', delete_profile),
+    path('products/favview/', FavView, name='fav-home'),
+    path('products/fav/<product_name>', add_to_fav, name='fav'),
+    path('products/removefav/<product_name>', remove_from_fav, name='remove-fav'),
+    path('products/favview/remove/<product_name>', remove_from_fav, name='remove-fav'),
     path('products/cart/<product_name>', add_to_cart, name='cart'),
     path('products/remove/<product_name>', remove_from_cart, name='remove-cart'),
     path('products/cartview/', CartView, name='cart-home'),

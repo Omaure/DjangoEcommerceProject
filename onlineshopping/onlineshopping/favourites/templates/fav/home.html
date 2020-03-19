@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,47 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Cart Page</title>
+    <title>Favourite Page</title>
 </head>
 <body>
 {% block content %}
 <div class="container my-5">
     <div class="my-5">
-        <h2>You Cart</h2>
+        <h2>You Favourites</h2>
     </div>
     <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Product Name</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
         </tr>
         </thead>
         <tbody>
-        {% for cart in carts %}
+        {% for fav in favs %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ cart.item.product_name }}</td>
-            <td>{{ cart.quantity }}</td>
-            <td>${{ cart.get_total }}</td>
-            <td><a href="/products/cartview/remove/{{ cart.item.product_name }}" class="btn btn-danger">
+            <td>{{ fav.favitem.product_name }}</td>
+            <td><a href="/products/favview/remove/{{fav.favitem.product_name}}" class="btn btn-danger">
                 <i class="fa fa-remove prefix"></i>
-                Remove from Cart</a>
+                Remove from Favourites</a>
+            </td>
+            <td><i class="fa fa-shopping-cart"></i>
+                <a href="/products/cart/{{ fav.favitem.product_name }}" class="btn btn-success">
+                    Add to Cart
+                </a>
             </td>
         </tr>
         {% endfor %}
         <tr>
             <th scope="row"></th>
-            <td colspan="2">Total</td>
-            <td>${{ order.get_totals}}</td>
-        </tr>
-        <tr>
-            <th scope="row"></th>
             <td colspan="3" class="text-right ">
-                <a href="{% url 'products' %}" class="btn btn-warning mr-4">Continue Shoping</a>
-                <a href="{% url 'products' %}" class="btn btn-success mr-4">Proceed To Checkout</a>
-
+                <a href="{% url 'cart-home' %}" class="btn btn-success mr-4 fa fa-shopping-cart prefix">
+                    <i class="fa fa-shopping-cart"></i>
+                    Proceed To Cart</a>
             </td>
         </tr>
         </tbody>
