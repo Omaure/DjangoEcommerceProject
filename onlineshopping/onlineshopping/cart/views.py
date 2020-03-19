@@ -8,8 +8,8 @@ from django.shortcuts import redirect
 from django.views.generic import ListView
 from myshopping import urls
 
-# Add to Cart View
 
+# Add to Cart View
 
 def add_to_cart(request, product_name):
     item = get_object_or_404(Product, product_name=product_name)
@@ -36,6 +36,7 @@ def add_to_cart(request, product_name):
         order.orderitems.add(order_item)
         messages.info(request, "This item was added to your cart.")
         return redirect("products")
+
 
 # Remove item from cart
 
@@ -72,11 +73,10 @@ def remove_from_cart(request, product_name):
         messages.info(request, "You do not have an active order")
         return redirect("core:products")
 
+
 # Cart View
 
-
 def CartView(request):
-
     user = request.user
 
     carts = Cart.objects.filter(user=user)
@@ -89,15 +89,3 @@ def CartView(request):
     else:
         messages.warning(request, "You do not have any orders")
         return redirect("products")
-
-
-def checkout(request):
-    product = Cart.objects.all()
-    parameter = {'product': product}
-    return render(request, 'cart/checkout.html', parameter)
-
-
-def clearCart(request):
-    cart_qs = Cart.objects.filter(user=request.user)
-    cart_qs.clear()
-    return redirect('products')
