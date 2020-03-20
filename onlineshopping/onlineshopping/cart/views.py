@@ -89,3 +89,18 @@ def CartView(request):
     else:
         messages.warning(request, "You do not have any orders")
         return redirect("products")
+<<<<<<< HEAD
+=======
+
+
+def checkout(request):
+    product = Cart.objects.all()
+    parameter = {'product': product}
+    return render(request, 'cart/checkout.html', parameter)
+
+def clearCart(request):
+    if request.method == 'GET':
+        cart_qs =Cart.objects.filter(user=request.user)
+        cart_qs.delete()        
+        return redirect('products')
+>>>>>>> origin/TestBranch5
