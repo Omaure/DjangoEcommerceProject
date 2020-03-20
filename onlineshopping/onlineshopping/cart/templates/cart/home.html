@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 90983e8dfd21e2738962784c2714d34ed62d01db
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-
-=======
->>>>>>> 90983e8dfd21e2738962784c2714d34ed62d01db
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -38,11 +30,8 @@
       <td>{{ cart.item.product_name }}</td>
       <td>{{ cart.quantity }}</td>
       <td>${{ cart.get_total }}</td>
-<<<<<<< HEAD
      <td> <a href="/products/cartview/remove/{{ cart.item.product_name }}" class="btn btn-danger">Remove from Cart</a>
      </td>
-=======
->>>>>>> 90983e8dfd21e2738962784c2714d34ed62d01db
     </tr>
 	{% endfor %}
     <tr>
@@ -53,14 +42,9 @@
     <tr>
       <th scope="row"></th>
       <td colspan="3" class="text-right ">
-<<<<<<< HEAD
         <a href="{% url 'products' %}" class="btn btn-warning mr-4">Continue Shoping</a>
         <a href="{% url 'checkout' %}" class="btn btn-success mr-4">Proceed To Checkout</a>
        
-=======
-        <a href="../../" class="btn btn-warning mr-4">Continue Shoping</a>
-        <a href="/accounts/login/" class="btn btn-success mr-4">Proceed To Checkout</a>
->>>>>>> 90983e8dfd21e2738962784c2714d34ed62d01db
       </td>
     </tr>
   </tbody>

@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% if request.user.is_authenticated %}
+
+<a style="font-size: large;" class="btn btn-primary button" href="/accounts/delete/">
+    Deactivate User
+</a>
+
+{%else%}
+<p> Please Login or Signup </p>
+<a class="btn btn-primary button" href="/accounts/login/">Login</a>
+<a class="btn btn-primary button" href="/accounts/signup/">SignUp</a>
+{% endif %}
+
+<style>
+    @import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+    /*font-family: 'Droid Arabic Naskh', serif;*/
+
+    .header {
+        text-align: center;
+        background: lightseagreen;
+        height: 90px;
+        width: 590px;
+        padding: 15px;
+        border-radius: 15px;
+        font-family: 'Droid Arabic Naskh';
+        /* margin-left: 750px ; */
+        margin: 50px auto;
+        color: WHITE;
+        text-shadow: 2px 2px black;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .topbox {
+
+        border: 5px solid lightseagreen;
+        color: #811f1f;
+        font-size: large;
+    }
+
+
+</style>
+<head>
+
+    <h2 class="header" ;>
+        Soa2 El-Gom3a
+    </h2>
+    <form action="{% url 'search_results' %}" method="get">
+        <input style="width:25%" name="q" type="text" placeholder="What do you want?">
+
+    </form>
+    <ul>
+        <li class="topbox"><a href="/">Home</a></li>
+        <li class="topbox"><a href="products/">Products</a></li>
+        <!-- <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li> -->
+    </ul>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a.active {
+            background-color: #4CAF50;
+            color: #811f1f;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #811f1f;
+            color: white;
+        }
+
+        li a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+
+        .container {
+
+            margin: 20px;
+        }
+
+        .CategoryName {
+            color: white;
+            text-shadow: 2px 2px black;
+            margin-left: auto;
+            padding-left: 80px;
+        }
+
+        .Category {
+
+            width: 40%;
+            height: 250px;
+            border: 5px dashed rgb(22, 138, 132);
+        }
+    </style>
+</head>
+<div style="margin-left:230px;padding:20px;width: 300 px ;height: 300px;" id="myCarousel" class="carousel slide"
+     data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div style="margin-left: 220px;" class="carousel-inner" role="listbox">
+        {% for p in product_list %}
+        {% if forloop.counter == 1 %}
+        <div class="item active">
+            {% else %}
+            <div class="item">
+                {% endif %}
+                <img src="{{ p.image1.url }}" alt="Image" width="250px" height="250px">
+                <div class="carousel-caption">
+                    <h3>{{ p.product_name }}</h3>
+                    <p>{{ p.product_price }} LE</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Left and right controls -->
+        <a style="margin: auto;" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <body style="background-color:  	#141518;">
+    <div style="margin:15px auto;width:90%;height: 100%;background-color: lightblue;box-shadow:3px 3px 3px 3px #4a4444;border-radius: 10px;border-color: #4a4444;">
+
+
+        <div style="vertical-align:auto" class="container">
+            {% for item in cat_list %}
+            <h1 class="CategoryName">{{ item.cat_name}} </h1>
+            <img class="Category" src='{{ MEDIA_URL }}{{ item.cat_image}}' ALIGN="right">
+            <p style="color:black;font-family:'ARIAl';font-size: 17px; width: 50%;text-align: center;">
+                {{item.cat_description}}</p>
+
+            <div class="container">
+                <div class="dropdown">
+                    <button style="margin-left:50px;color:white;font-size:15px;text-align: center;background-color: #008c9e;font-weight: bold;border-radius: 5px;"
+                            class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{
+                        item.cat_name}}
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {% for sitem in subcat_list %}
+                        {% if item.cat_id == sitem.category_id_id%}
+                        <li class="dropdown-submenu">
+                            <a class="test" href="#">{{ sitem.subcat_name}} <span class="caret"></span></a>
+
+                            <ul class="dropdown-menu">
+                                {% for bitem in brand_list %}
+                                {% if bitem.subcat_id_id == sitem.subcat_id %}
+                                <li class="dropdown-submenu">
+                                    <a class="test" href="#">{{ bitem.name}} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        {% for pitem in product_list %}
+                                        {% if bitem.brand == pitem.product_brand_id %}
+                                        <li id="test"><a href="/productbyname/{{ pitem.product_name }}/">
+                                            {{pitem.product_name }}</a></li>
+
+                                        {% else%}
+
+                                        {% endif %}
+                                        {%endfor%}
+                                    </ul>
+                                </li>
+                                {% else%}
+
+                                {% endif %}
+                                {%endfor%}
+                            </ul>
+                        </li>
+                        {% else%}
+
+                        {% endif %}
+                        {%endfor%}
+
+                    </ul>
+                </div>
+
+            </div>
+
+            {%endfor%}
+
+        </div>
+        <script>
+
+            $(document).ready(function () {
+                $('.dropdown-submenu a.test').on("click", function (e) {
+                    $(this).next('ul').toggle();
+                    e.stopPropagation();
+                    e.preventDefault();
+                });
+            });
+        </script>
+
+    </body>
+
+
+</html>
