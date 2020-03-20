@@ -1,7 +1,14 @@
 
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+
+{% load ratings %}
+<h1 style="text-align: center;">Soa2 El Gom3a</h1>
+<ul >
+  <li  class="topbox"><a  href="/">Home</a></li>
+  <li  class="topbox"><a href="/products/">Products</a></li>
+  <!-- <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li> -->
+</ul>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Djago Ecommer | manascode.com</title>
   </head>
-  <body>
-    <h2 style="text-align: center;color: blue;padding: 50px;font-size: 50px;font-weight: bold;">
-        Online shopping
-    </h2>
+  <body class="body"></body>
     
 
 <style>
@@ -42,7 +46,18 @@
   color: orange;
 }
 </style>
+{% if request.user.is_authenticated %}
+<a class="btn btn-primary button" href="/accounts/logout/">logout</a>
+{%endif%}
 
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+</head>
+<body>
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
+</body>
 <div class="container">
   <div class="row">
     {% for bitem in brand_list %}
@@ -53,18 +68,32 @@
     <div class="card-body">
       <h5 class="card-title"> {{ product.product_name }}</h5>
       <p class="card-text">{{ product.product_price }} LE </p>
-      
     </div>
+  
+    {% if request.user.is_authenticated %}
+    {% ratings product %}
     <div class='card-footer text-center'>
-      <a href="cart/{{ product.product_name }}" class="btn btn-success">Add to Cart</a>
-      <a href="remove/{{ product.product_name }}" class="btn btn-danger">Remove from Cart</a>
+      
+      <a href="/productbyname/cart/{{ product.product_name }}" class="btn btn-success">Add to Cart</a>
+     
     </div>
     
+
+    
+    {%else%}
+    <div class='card-footer text-center'>
+      {% ratings product %}
+      <a style="font-size: large;" href="/accounts/signup/" class="btn btn-success">login to add to cart</a>
+      <a style="font-size: large;" href="/accounts/login/" class="btn btn-danger">Sign up</a>
+    </div>
+    
+    {%endif%}
   </div>
    {%else%}
 
     {%endif%}
     {%endfor%}
+   
     <div class="col-md-4 col-sm-12 col-lg-3 m-1"></div>
 
 
@@ -76,6 +105,6 @@
   </div>
   </div>
   </div>
-  
+ 
 </div>
-    </html>
+ {% include 'post_detail.html' %}

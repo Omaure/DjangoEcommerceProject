@@ -95,17 +95,3 @@ def BootstrapFilterView(request):
 
 def index(request, **Kwargs):
     return render(request, 'index.html')
-
-# def userpage(request):
-#     return render(request, 'userpage.html')
-
-# def editprofile(request):
-#     if request.method == 'POST':
-#         form = EditProfileForm(request.POST, instance=request.user)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('userpage')
-#         else:
-#             form = EditProfileForm(instance=request.user)
-#             args = {'form' : form}
-#             return render(request, 'userpage.html', args)

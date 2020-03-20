@@ -57,28 +57,26 @@ class Product(models.Model):
         
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField()
-    DOB = models.DateTimeField(default=datetime.date.today, blank=True)
+    avatar = models.ImageField(default='default.png', upload_to='profile_pics')
+    # DOB = models.DateTimeField(default=datetime.date.today, blank=True)
     location = models.CharField(max_length=200, default="None")
-    address = models.CharField(max_length=100, default='')
-    address2 = models.CharField(max_length=100, default='')
-    email = models.CharField(max_length=100, default='')
+    address = models.CharField(max_length=100, default='None')
+    address2 = models.CharField(max_length=100, default='None')
+    email = models.CharField(max_length=100, default='None')
     phone = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
-
     def create_profile(sender, **kwargs):
         if kwargs['created']:
             user_profile = UserProfile.objects.create(user=kwargs['instance'])
     post_save.connect(create_profile, sender=User)
+    def save(self, *args, **kwargs):
+        super(UserProfile, self).save(*args, **kwargs)
 
-    def save(self):
-        super().save()
-
-        img = Image.open(self.avatar.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.avatar.path)
+        # img = Image.open(self.avatar.path)
+        # if img.height > 300 or img.width > 300:
+        #     output_size = (300, 300)
+        #     img.thumbnail(output_size)
+        #     img.save(self.avatar.path)    
 

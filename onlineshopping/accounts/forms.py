@@ -58,11 +58,11 @@ class UserRegisterForm(forms.ModelForm):
 class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
-        fields = (
+        fields = [
             'username',
             'email',
             'password'
-            )
+        ]
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:

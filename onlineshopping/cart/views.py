@@ -62,14 +62,14 @@ def remove_from_cart(request, product_name):
                 user=request.user,
             )[0]
             order.orderitems.remove(order_item)
-            messages.info(request, "This item was removed from your cart.")
+            messages.info(request, " Item was removed from your cart.")
             return redirect("products")
         else:
-            messages.info(request, "This item was not in your cart")
+            messages.info(request, "Item was not in your cart")
             return redirect("products")
     else:
         messages.info(request, "You do not have an active order")
-        return redirect("products")
+        return redirect("core:products")
 
 # Cart View
 
@@ -85,6 +85,18 @@ def CartView(request):
         return render(request, 'cart/home.html', {"carts": carts, 'order': order})
 		
     else:
-        messages.warning(request, "You do not have an active order")
-        return render(request, 'cart/home.html')
-    
+        messages.warning(request, "You do not have any orders")
+        return redirect("products")
+
+
+
+def checkout(request):
+    product = Cart.objects.all()
+    parameter = {'product': product}
+    return render(request, 'cart/checkout.html', parameter)
+
+def clearCart(request):
+    if request.method == 'GET':
+        cart_qs =Cart.objects.filter(user=request.user)
+        cart_qs.delete()        
+        return redirect('products')        

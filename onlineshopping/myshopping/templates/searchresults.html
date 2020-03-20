@@ -1,5 +1,4 @@
-<html>
-
+{%include 'base.html'%}
      <ul>
   {% for p in queryset %}
   {% if p.product_name  %}
@@ -16,8 +15,8 @@
   {% for c in queryset  %}
   {% if c.cat_name  %}
   <img src='{{ MEDIA_URL }}{{ c.cat_image}}'ALIGN="right">
-  Category Name:
-  <h1 href="">{{ c.cat_name }} </h1>
+
+  <h1 style="color: purple;" href="">{{ c.cat_name }} </h1>
 
     <h1 class="test" href="#">{{ s.subcat_name}} <span class="caret"></span></h1>
    <div>
@@ -35,7 +34,7 @@
                     <ul class="dropdown-menu">
                       {% for pitem in products %}
                       {% if bitem.brand == pitem.product_brand_id %}
-                      <li id="test"><a href="/productbyname/{{pitem.product_name }}/"> {{pitem.product_name }}</a></li>
+                      <li id="test"><a style="color: blue;"href="/productbyname/{{pitem.product_name }}/"> {{pitem.product_name }}</a></li>
                       {% else%}
 
                       {% endif %}
@@ -77,5 +76,4 @@
 
 </ul> 
 
-</html>
 

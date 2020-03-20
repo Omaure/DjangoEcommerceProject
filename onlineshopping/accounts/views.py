@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import EditProfileForm, ProfileUpdateForm
+# ProfileUpdateForm
 from django.contrib import messages
 
 
@@ -57,6 +58,15 @@ def details(request):
     print(context)
     return render(request, "userDetails.html", context)
 
+
+def delete_profile(request):
+    user = request.user
+    user.is_active = False
+    user.save()
+    messages.success(request, 'Profile successfully disabled.')
+    return redirect('/')
+
+
 def userpage(request):
     args = {'user': request.user}
     return render(request, 'userpage.html', args)
@@ -79,4 +89,3 @@ def editprofile(request):
             'p_form': p_form
         }
         return render(request, 'edit_profile.html', args)
-
