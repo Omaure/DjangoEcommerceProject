@@ -51,10 +51,17 @@ Django Project Intake 40 IoT ITI
 
 # Built With
 -- [MySQL](https://dev.mysql.com/downloads/connector/j/) Database
+
 -- [MDBbootstrap](https://mdbootstrap.com/) Frontend
+
 -- [Bootstrap](https://getbootstrap.com/) Frontend
+
 -- [Jquery](https://jquery.com/)
+
 -- [Google Fonts](https://fonts.google.com/)
+
 -- [Django](https://www.djangoproject.com/) Backend
+
 -- [VSCode](https://code.visualstudio.com/) IDE
+
 -- [PyCharm](https://www.jetbrains.com/pycharm/) IDE
