@@ -1,0 +1,110 @@
+
+{% load static %}
+
+{% load ratings %}
+<h1 style="text-align: center;">Soa2 El Gom3a</h1>
+<ul >
+  <li  class="topbox"><a  href="/">Home</a></li>
+  <li  class="topbox"><a href="/products/">Products</a></li>
+  <!-- <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li> -->
+</ul>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Djago Ecommer | manascode.com</title>
+  </head>
+  <body class="body"></body>
+    
+
+<style>
+     .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+.checked {
+  color: orange;
+}
+</style>
+{% if request.user.is_authenticated %}
+<a class="btn btn-primary button" href="/accounts/logout/">logout</a>
+{%endif%}
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+</head>
+<body>
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
+</body>
+<div class="container">
+  <div class="row">
+    {% for bitem in brand_list %}
+    {% if bitem.brand == product.product_brand_id  %}
+    <div class="card"  style='width:30%;'>
+    
+    <img style='width:70% ;margin: auto; padding: 30px;'; src='{{ MEDIA_URL }}{{ bitem.brand_img}}'>
+    <div class="card-body">
+      <h5 class="card-title"> {{ product.product_name }}</h5>
+      <p class="card-text">{{ product.product_price }} LE </p>
+    </div>
+  
+    {% if request.user.is_authenticated %}
+    {% ratings product %}
+    <div class='card-footer text-center'>
+      
+      <a href="/productbyname/cart/{{ product.product_name }}" class="btn btn-success">Add to Cart</a>
+     
+    </div>
+    
+
+    
+    {%else%}
+    <div class='card-footer text-center'>
+      {% ratings product %}
+      <a style="font-size: large;" href="/accounts/signup/" class="btn btn-success">login to add to cart</a>
+      <a style="font-size: large;" href="/accounts/login/" class="btn btn-danger">Sign up</a>
+    </div>
+    
+    {%endif%}
+  </div>
+   {%else%}
+
+    {%endif%}
+    {%endfor%}
+   
+    <div class="col-md-4 col-sm-12 col-lg-3 m-1"></div>
+
+
+    <div class="card" style='width:100%; '>
+              <img style='width:100%;'class="card-img-top" alt="{{ product.product_name }}" src='{{ MEDIA_URL }}{{ product.image1}} '>  
+              <img style='width:100%;'class="card-img-top" alt="{{ product.product_name }}" src='{{ MEDIA_URL }}{{ product.image2}} '>  
+    <img style='width:100%;'class="card-img-top"  src='{{ MEDIA_URL }}{{ product.image3}}'>
+    
+  </div>
+  </div>
+  </div>
+ 
+</div>
+ {% include 'post_detail.html' %}
