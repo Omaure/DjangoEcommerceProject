@@ -39,10 +39,17 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap4',
     'accounts',
+<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
     'cart',
     'favourites'
 
 ]
+=======
+    'cart'
+
+]
+
+>>>>>>> TestBranch3:onlineshopping/onlineshopping/settings.py
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,9 +89,15 @@ WSGI_APPLICATION = 'onlineshopping.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD:onlineshopping/onlineshopping/onlineshopping/settings.py
         'NAME': 'pTest',
         'USER': 'root',
         'PASSWORD': 'omaramora11',
+=======
+        'NAME': 'onlineShopping2',
+        'USER': 'lamis',
+        'PASSWORD': '1234',
+>>>>>>> TestBranch3:onlineshopping/onlineshopping/settings.py
         'HOST': 'localhost'
     }
 }
