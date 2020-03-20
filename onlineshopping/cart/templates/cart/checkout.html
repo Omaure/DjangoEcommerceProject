@@ -1,0 +1,120 @@
+
+<!doctype html>
+<html lang="en">
+    <style>
+        .topform{
+background-color:black;
+color: white;
+width: 20%;
+        }
+         .h1 {
+      text-align: center;
+      background: purple;
+      height: 90px;
+      width: 590px;
+      padding: 15px ;
+      border-radius: 15px;
+      margin :50px auto;
+      color: WHITE;
+      text-shadow:2px 2px black;
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    </style>
+  <head >
+    <ul class="topform">
+        <li ><a class="topform" href="/">Home</a></li>
+        <li ><a class="topform" href="/products/">Products</a></li>
+      </ul>
+    <h1 class="h1"> Soa2 El-Gom3a</h1>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Checkout Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h1>Enter Address and other details</h1>
+          <form method='GET' action="{% url 'clearcart' %}" >
+            <div class="form-group">
+              <label for="exampleInputEmail1" aria-required="true"> Address</label>
+              <input type="name" class="form-control">
+              
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1"> Address2</label><small>(optional)</small>
+              <input type="name" class="form-control">
+              
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Cash
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <label class="form-check-label" for="exampleRadios2">
+               Visa
+              </label>
+            </div>
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected> </option>
+              <option>...</option>
+              <br><br>
+              
+            </select>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip">
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Shipping address is same as mentioned above
+              </label></div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                 Save the information for the next time
+                </label><br>
+            <button type="submit" href= "/products/cartview/clearCart//{{Cart.clearCart}}" class="btn btn-primary">Submit</button></form></div>
+
+        </div>
+        <div class="col-sm">
+          <h1> check your items in cart</h1>
+          {%if product %}
+          {% for cart in product %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      {{cart.item}}
+                      <span class="badge badge-primary badge-pill">{{cart.quantity}}</span>
+                    </li>
+                    {% endfor %}
+                {%else%}
+                <p> You don't have any orders ya bashaaaa</p>
+                {%endif%}
+                  </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    {% load crispy_forms_tags %}
+    <div  style="display: block; margin-top: 30px; margin-left: auto; margin-right: auto; width: 30%;">
+        <form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <br>
+            {{ p_form|crispy }}
+            <button  style="text-align: center; display: block; margin-top: 30px; margin-left: auto; margin-right: auto; width: 30%;" class="btn btn-success" type="submit">Update</button>
+        </form>
+      </div>
+      
+</body>
+
+</html>
