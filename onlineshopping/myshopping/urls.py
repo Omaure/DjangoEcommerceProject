@@ -12,7 +12,9 @@ from cart.views import checkout,clearCart
 from favourites.views import FavView, add_to_fav, remove_from_fav
 urlpatterns=[
     path('userpage/', userpage),
+    path('products/userpage/', userpage),
     path('userpage/edit/', editprofile),
+    path('products/userpage/edit/', editprofile),
     path('', views.Data_list, name='sublist'),
     path('products/', products, name='products'),
     path('productbyname/<productName>/',views.displayProductData,name='productbyname'),

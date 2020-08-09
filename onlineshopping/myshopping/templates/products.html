@@ -4,6 +4,28 @@
 
 {% load ratings %}
 <head>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,13 +33,14 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
           <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>    
+          
 </head>
 <meta charset="UTF-8">
 <title></title>
 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 </head>
 <body class="body">
-
+<div class="w-100 px-auto" style="padding-left:370px">
 <a style="font-size: large;" href="{% url 'cart-home' %}" class="btn btn-success">
     <i class="fa fa-shopping-cart prefix"></i>
     Go to Cart</a>
@@ -25,18 +48,18 @@
 <a style="font-size: large;" href="{% url 'fav-home' %}" class="btn btn-primary">
     <i class="fa fa-heart prefix"></i>
     Go to Favourites</a>
-
+</div>
 <div class="container">
     <div class="card-group">
         {% for item in products %}
         <!--bootstrap card with 3 horizontal images-->
-        <div class="row">
-            <div class="card col-md-4">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ item.image1 }}">
+        <div class="row mt-2 mb-2">
+            <div class="card col-md-4 h-75">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ item.image1 }}" height="250px" width="30px">
             </div>
 
-            <div class="card col-md-4">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ item.image2 }}">
+            <div class="card col-md-4 h-75">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ item.image2 }}" height="200px" width="30px">
 
                 <div class="card-body" style="text-align: center;">
                     <h5 style="font-size: large;" class="card-title"> {{ item.product_name }}</h5>
@@ -63,8 +86,8 @@
                 {%endif%}
             </div>
 
-            <div class="card col-md-4">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ item.image3 }}">
+            <div class="card col-md-4 h-75">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ item.image3 }}" height="250px" width="30px">
 
             </div>
 
